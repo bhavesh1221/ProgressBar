@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>progressBar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="outerbar">
+        <div class="innerbar">
+            <span class="innerspan">1%</span>
+        </div>
+    </div>
+    <button class="btn" onclick="upload()">Upload</button>
+    <script>
+        var innerbar = document.querySelector('.innerbar');
+        var innerspan = document.querySelector('.innerspan');
+        w = 1;
+        const upload = () => {
+            var y = setInterval(() => {
+                w++;
+                // console.log(w);
+                if(w > 100){
+                    clearInterval(y);
+                    innerspan.innerHTML = '100% Done'
+                }
+                else if (w<30){
+                    innerbar.style.background = 'red';
+                    innerbar.style.width = w + "%";
+                    innerspan.innerHTML = w + "%";
+                }
+                else if (w>30 && w<70){
+                    innerbar.style.background = 'orange';
+                    innerbar.style.width = w + "%";
+                    innerspan.innerHTML = w + "%";
+                } 
+                else if (w>70){
+                    innerbar.style.background = 'green';
+                    innerbar.style.width = w + "%";
+                    innerspan.innerHTML = w + "%";
+                }
+            },80)
+        }
+    </script>
+</body>
+</html>
